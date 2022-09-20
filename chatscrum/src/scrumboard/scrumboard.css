@@ -1,0 +1,140 @@
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    /* width: auto;
+    height: auto; */
+}
+
+.scrumboard{
+    position: relative;
+}
+
+#info{
+    padding: 20px;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+nav{
+    background-color: blue;
+    color: #eee;
+    display: flex;
+    padding: 20px 10px;
+    justify-content: space-between;
+}
+
+/* #task{
+    padding: 5px;
+    font-weight: 500;
+    box-shadow: 1px 2px 2px gray;
+    color: rpg(16,16,90);
+} */
+
+/* .var{
+    color: black;
+} */
+
+.container{
+    display: flex;
+    justify-content: space-around; 
+    margin-bottom: 10px; 
+    position: relative;
+}
+
+.weekly{
+    width: 256px;
+    border-radius: 22px;
+    height: 300px;
+    border: 1px solid;
+    word-break: break-word; 
+}
+
+.weekly h5{
+    background-color: darkcyan;
+    width: 256px;
+    border-radius: 22px;
+    margin-top: -0.5px;
+    padding: 5px 0px;
+    font-size: 22px;
+    text-align: center;
+}
+
+#modal{
+    box-shadow: 0 10px 20px 20px rgba(200, 200, 200, 0.69) ;
+    width: 400px;
+    height: auto;
+    position: relative;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    /* position: fixed; */
+}
+
+.modal-header{
+    display: flex;
+    background-color: blue;
+    width: 400px;
+    height: 50px;
+    justify-content: space-between;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.modal-header h5{
+    font-size: 20px;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.modal-header h3{
+    font-size: 20px;
+    margin-top: 8px;
+    margin-right: 10px;
+    color: red;
+    font-weight: 800;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.form{
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.text{
+    word-break: break-word; 
+    background-color: black;
+    color: white;
+    border-radius: 12px;
+}
+
+form button{
+    margin-left: 30px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-radius: 2px;
+}
+
+.show{
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    left: 80px;
+}
+
+.hidden{
+    display: none;
+}
+
+button #add{
+    margin-left: 40px;
+}
+
+#add{
+    font-size: 20px;
+    margin-left: 40px;
+    margin-top: 30px;
+    border-radius: 20px;
+}
