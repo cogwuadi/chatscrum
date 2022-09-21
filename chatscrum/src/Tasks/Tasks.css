@@ -2,4 +2,6 @@
 .task{
     background-color: blue;
     width: 253px;
+    padding: 10px;
+    cursor: pointer;
 }
