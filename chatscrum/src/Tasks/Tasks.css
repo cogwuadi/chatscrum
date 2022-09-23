@@ -1,7 +1,16 @@
 
 .task{
-    background-color: blue;
+    background-color: wheat;
     width: 253px;
     padding: 10px;
     cursor: pointer;
+}
+
+.scroll{
+    overflow-y: scroll;
+    height: 320px;
+}
+
+.time{
+    color: green;
 }

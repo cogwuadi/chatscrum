@@ -1,8 +1,10 @@
 import React from "react";
-// import Data from "../../static/data";
 import Data from "../static/data";
 import "./scrumboard.css"
 import Tasks from "../Tasks/Tasks";
+import AddTask from "./addTask";
+import Users from "../users/users";
+import axios from "axios"
 
 
 class Scrumboard extends React.Component {
@@ -13,37 +15,37 @@ class Scrumboard extends React.Component {
        this.state = {
             data: Data,
             isOpen:false,
-            tasks: null,
+            tasks: [],
        }
     }
 
-    openModal = () => {
-        this.setState({
-            isOpen: true
+    addTask = (task) => {
+        task.id = Math.random().toString(36).slice(2,9)
+        let tasks = [...this.state.tasks, task]
+        this.setState ({
+            tasks
         })
     }
 
-    closeModal = () => {
-        this.setState({
-            isOpen: false
+    deleteTask = (id) => {
+        const tasks = this.state.tasks.filter(task => {
+           return task.id != id
         })
-    }  
-
-    handleChange = (e) => {
         this.setState({
-            tasks: e.target.value
+            tasks
         })
     }
-
-    handleSubmit = (e) => {
-        e.preventDefault();
-        this.setState({
-            tasks: e.target.value
-        })
+    
+    componentDidMount() {
+        axios.get("http://liveapi.chatscrum.com/scrum/api/scrumgoals/")
+            // .then(res => console.log (res))  
+            .then(res => this.setState ({
+                tasks: res.data,
+            })) 
     }
 
     render() {
-        console.log("Logged in as", this.state.data.fullname)
+        console.log("Logged in as", Data.Username)
         return ( 
             <div className="scrumboard">
                 <nav>
@@ -56,32 +58,11 @@ class Scrumboard extends React.Component {
 
                 <p id="info">Hello {Data.fullname} Welcome to your scrumboard</p>
 
-                <Tasks />
+                <Tasks data= {this.state.tasks} deleteTask= {this.deleteTask}/>
 
-                {/* <div className="container">
-                    <div className="weekly">
-                        <h5>Weekly Task</h5>
-                        <p id="box">{this.state.tasks}</p>
-                    </div>
+                <AddTask addTask = {this.addTask}/>
 
-                    <div className="weekly">
-                        <h5>Daily Task</h5>
-                    </div>                   
-                </div> */}
-
-                <div id="modal" className={this.state.isOpen ? "show" : "hidden"}>
-                    <div className="modal-header">
-                        <h5>Add a new task</h5>
-                        <h3 className="x" onClick={this.closeModal}>X</h3>
-                    </div>
-
-                    <form className="form" onSubmit={this.handleSubmit}>
-                        <input type="text" className="text" onChange={this.handleChange}/>
-                        <button>Confirm</button>
-                    </form>
-                </div>
-
-                <button id="add" onClick={() => this.openModal()} className= { this.state.isOpen ? "hide-btn" : ""}>Add Task</button>
+                <Users />
 
             </div>
         )
